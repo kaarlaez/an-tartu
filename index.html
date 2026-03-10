@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ән Тарту 🎵</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #D4A853; --gold-light: #F0C97A;
+    --deep: #0D0A1A; --card: rgba(255,255,255,0.06);
+    --text: #F5EFE0; --muted: rgba(245,239,224,0.6);
+  }
+  html, body { height: 100%; overflow: hidden; }
+  body { background: var(--deep); color: var(--text); font-family: 'Nunito', sans-serif; }
+
+  .bg {
+    position: fixed; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse at 20% 20%, #2a1060 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, #1a0830 0%, transparent 50%),
+                var(--deep);
+  }
+  .stars { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+  .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite var(--delay,0s); }
+  @keyframes twinkle { 0%,100%{opacity:.1;transform:scale(1)} 50%{opacity:.8;transform:scale(1.3)} }
+
+  .notes { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .note { position: absolute; font-size: 16px; opacity: 0; animation: floatNote var(--d,8s) ease-in-out infinite var(--delay,0s); }
+  @keyframes floatNote {
+    0%{opacity:0;transform:translateY(100vh) rotate(0deg)}
+    10%{opacity:.2} 90%{opacity:.08}
+    100%{opacity:0;transform:translateY(-80px) rotate(360deg)}
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 420px; margin: 0 auto;
+    padding: 16px 16px 14px;
+    height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  /* HEADER */
+  .header { text-align: center; margin-bottom: 10px; animation: fadeDown .7s ease both; }
+  .logo-icon {
+    width: 50px; height: 50px; margin: 0 auto 7px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 15px; display: flex; align-items: center;
+    justify-content: center; font-size: 22px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{box-shadow:0 6px 20px rgba(212,168,83,.4)}
+    50%{box-shadow:0 6px 32px rgba(212,168,83,.75)}
+  }
+  .logo-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; letter-spacing: 1px; margin-bottom: 2px;
+  }
+  .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { text-align: center; margin-bottom: 10px; animation: fadeUp .7s .12s ease both; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.45; margin-bottom: 4px;
+  }
+  .hero p { font-size: 11px; color: var(--muted); }
+
+  .divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,168,83,.3),transparent); margin: 8px 0; }
+
+  /* SERVICES */
+  .section-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; animation: fadeUp .7s .22s ease both; }
+
+  .services { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 4px; animation: fadeUp .7s .28s ease both; }
+  .service-card {
+    background: var(--card); border: 1px solid rgba(212,168,83,.15);
+    border-radius: 11px; padding: 8px 3px; text-align: center;
+    backdrop-filter: blur(10px); transition: transform .2s, border-color .2s;
+  }
+  .service-card:hover { transform: translateY(-2px); border-color: rgba(212,168,83,.4); }
+  .service-icon { font-size: 17px; margin-bottom: 4px; }
+  .service-name { font-size: 9px; font-weight: 700; margin-bottom: 2px; }
+  .service-desc { font-size: 8px; color: var(--muted); }
+
+  .service-more { font-size: 9px; color: var(--gold); font-style: italic; text-align: center; margin-bottom: 6px; animation: fadeUp .7s .28s ease both; }
+
+  /* PRICING */
+  .pricing { margin-bottom: 8px; animation: fadeUp .7s .35s ease both; }
+  .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .price-card {
+    background: var(--card); border: 1px solid rgba(212,168,83,.15);
+    border-radius: 13px; padding: 10px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    backdrop-filter: blur(10px); text-align: center;
+    transition: transform .2s, border-color .2s;
+  }
+  .price-card:hover { transform: translateY(-2px); border-color: rgba(212,168,83,.4); }
+  .price-card.featured {
+    background: linear-gradient(135deg,rgba(212,168,83,.15),rgba(212,168,83,.05));
+    border-color: rgba(212,168,83,.5);
+  }
+  .price-emoji { font-size: 20px; }
+  .price-name { font-size: 12px; font-weight: 700; }
+  .price-time { font-size: 9px; color: var(--muted); }
+  .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); }
+
+  /* FEATURES */
+  .features { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; animation: fadeUp .7s .42s ease both; }
+  .feature { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); }
+  .feature-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* CTA */
+  .cta { margin-top: auto; animation: fadeUp .7s .5s ease both; }
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    width: 100%; padding: 15px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border: none; border-radius: 17px; color: white;
+    font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800;
+    text-decoration: none; cursor: pointer;
+    box-shadow: 0 8px 26px rgba(37,211,102,.4);
+    transition: transform .2s, box-shadow .2s; margin-bottom: 7px;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(37,211,102,.55); }
+  .cta-btn:active { transform: translateY(0); }
+  .wa-icon {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,.2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; flex-shrink: 0;
+  }
+  .cta-note { text-align: center; font-size: 10px; color: var(--muted); }
+
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars" id="stars"></div>
+<div class="notes" id="notes"></div>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-icon">🎵</div>
+    <div class="logo-title">Ән Тарту</div>
+    <div class="logo-sub">Жеке ән сыйлаңыз</div>
+  </div>
+
+  <div class="hero">
+    <h1>Жақындарыңызға ең ерекше сыйлық —<br>атымен жасалған жеке ән</h1>
+    <p>Жасанды интеллект арқылы тез дайын • 100% жеке, тек сізге арналған</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Кімге арнайсыз?</div>
+  <div class="services">
+    <div class="service-card">
+      <div class="service-icon">💝</div>
+      <div class="service-name">Жұбайыңызға</div>
+      <div class="service-desc">Сүйіктіңізге</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌸</div>
+      <div class="service-name">Анаңызға</div>
+      <div class="service-desc">Ең қымбатыңызға</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎂</div>
+      <div class="service-name">Туған күнге</div>
+      <div class="service-desc">Ұмытылмас</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <div class="service-name">Досыңызға</div>
+      <div class="service-desc">Жүректен</div>
+    </div>
+  </div>
+  <div class="service-more">✨ және басқа да жақындарыңызға — тапсырыс беріңіз!</div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">Бағалар</div>
+  <div class="pricing">
+    <div class="price-row">
+      <div class="price-card">
+        <div class="price-emoji">🥉</div>
+        <div class="price-name">Стандарт ән</div>
+        <div class="price-time">⏱ 5–6 сағатта</div>
+        <div class="price-amount">5 000₸</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-emoji">⚡️</div>
+        <div class="price-name">Жылдам ән</div>
+        <div class="price-time">⏱ 2 сағатта</div>
+        <div class="price-amount">7 000₸</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature"><div class="feature-dot"></div><span>100% жеке — атымен</span></div>
+    <div class="feature"><div class="feature-dot"></div><span>Ұнамаса — қайта тегін</span></div>
+    <div class="feature"><div class="feature-dot"></div><span>Kaspi төлем</span></div>
+  </div>
+
+  <div class="cta">
+    <a class="cta-btn" href="https://wa.me/87XXXXXXXXX?text=Сәлем!%20Ән%20тапсырыс%20бергім%20келеді%20🎵" target="_blank">
+      <div class="wa-icon">💬</div>
+      WhatsApp-та тапсырыс беру
+    </a>
+    <div class="cta-note">Тегін кеңес аласыз • Жауап 5 минутта</div>
+  </div>
+
+</div>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 50; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random() * 2 + 0.5;
+    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${Math.random()*3+2}s;--delay:${Math.random()*4}s;`;
+    starsEl.appendChild(s);
+  }
+  const notesEl = document.getElementById('notes');
+  ['🎵','🎶','♪','♫','🎵','🎶'].forEach((ch, i) => {
+    const n = document.createElement('div');
+    n.className = 'note'; n.textContent = ch;
+    n.style.cssText = `left:${10+i*15}%;--d:${9+i*1.5}s;--delay:${i*1.8}s;`;
+    notesEl.appendChild(n);
+  });
+</script>
+</body>
+</html>
