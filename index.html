@@ -36,103 +36,100 @@
   .wrap {
     position: relative; z-index: 1;
     max-width: 420px; margin: 0 auto;
-    padding: 16px 16px 14px;
+    padding: 20px 18px 20px;
     min-height: 100vh;
     display: flex; flex-direction: column;
+    justify-content: space-between;
   }
 
   /* HEADER */
-  .header { text-align: center; margin-bottom: 10px; animation: fadeDown .7s ease both; }
+  .header { text-align: center; margin-bottom: 12px; animation: fadeDown .7s ease both; }
   .logo-icon {
-    width: 50px; height: 50px; margin: 0 auto 7px;
+    width: 56px; height: 56px; margin: 0 auto 8px;
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    border-radius: 15px; display: flex; align-items: center;
-    justify-content: center; font-size: 22px;
+    border-radius: 16px; display: flex; align-items: center;
+    justify-content: center; font-size: 26px;
     animation: pulse 2s ease-in-out infinite;
   }
   @keyframes pulse {
     0%,100%{box-shadow:0 6px 20px rgba(212,168,83,.4)}
-    50%{box-shadow:0 6px 32px rgba(212,168,83,.75)}
+    50%{box-shadow:0 6px 36px rgba(212,168,83,.75)}
   }
   .logo-title {
-    font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600;
+    font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; letter-spacing: 1px; margin-bottom: 2px;
+    background-clip: text; letter-spacing: 1px; margin-bottom: 3px;
   }
   .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
 
   /* HERO */
-  .hero { text-align: center; margin-bottom: 10px; animation: fadeUp .7s .12s ease both; }
+  .hero { text-align: center; margin-bottom: 12px; animation: fadeUp .7s .12s ease both; }
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.45; margin-bottom: 4px;
+    font-size: 18px; font-weight: 400; font-style: italic; line-height: 1.5; margin-bottom: 4px;
   }
-  .hero p { font-size: 11px; color: var(--muted); }
+  .hero h1 span { display: block; font-size: 15px; color: var(--muted); font-style: normal; margin-top: 4px; }
 
-  .divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,168,83,.3),transparent); margin: 8px 0; }
+  .divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,168,83,.3),transparent); margin: 10px 0; }
 
   /* SERVICES */
-  .section-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; animation: fadeUp .7s .22s ease both; }
+  .section-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 
-  .services { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; margin-bottom: 4px; animation: fadeUp .7s .28s ease both; }
+  .services { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-bottom: 5px; animation: fadeUp .7s .28s ease both; }
   .service-card {
     background: var(--card); border: 1px solid rgba(212,168,83,.15);
-    border-radius: 11px; padding: 8px 3px; text-align: center;
+    border-radius: 12px; padding: 10px 4px; text-align: center;
     backdrop-filter: blur(10px); transition: transform .2s, border-color .2s;
   }
   .service-card:hover { transform: translateY(-2px); border-color: rgba(212,168,83,.4); }
-  .service-icon { font-size: 17px; margin-bottom: 4px; }
-  .service-name { font-size: 9px; font-weight: 700; margin-bottom: 2px; }
-  .service-desc { font-size: 8px; color: var(--muted); }
+  .service-icon { font-size: 20px; margin-bottom: 5px; }
+  .service-kk { font-size: 9.5px; font-weight: 700; margin-bottom: 2px; }
+  .service-ru { font-size: 8.5px; color: var(--muted); }
 
-  .service-more { font-size: 9px; color: var(--gold); font-style: italic; text-align: center; margin-bottom: 6px; animation: fadeUp .7s .28s ease both; }
-
-  /* PRICING */
-  .pricing { margin-bottom: 8px; animation: fadeUp .7s .35s ease both; }
-  .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-  .price-card {
-    background: var(--card); border: 1px solid rgba(212,168,83,.15);
-    border-radius: 13px; padding: 10px 8px;
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
-    backdrop-filter: blur(10px); text-align: center;
-    transition: transform .2s, border-color .2s;
-  }
-  .price-card:hover { transform: translateY(-2px); border-color: rgba(212,168,83,.4); }
-  .price-card.featured {
-    background: linear-gradient(135deg,rgba(212,168,83,.15),rgba(212,168,83,.05));
-    border-color: rgba(212,168,83,.5);
-  }
-  .price-emoji { font-size: 20px; }
-  .price-name { font-size: 12px; font-weight: 700; }
-  .price-time { font-size: 9px; color: var(--muted); }
-  .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--gold); }
+  .service-more { font-size: 9px; color: var(--gold); font-style: italic; text-align: center; margin-bottom: 8px; }
 
   /* FEATURES */
-  .features { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; animation: fadeUp .7s .42s ease both; }
+  .features { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; animation: fadeUp .7s .35s ease both; }
   .feature { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); }
   .feature-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
   /* CTA */
-  .cta { margin-top: auto; animation: fadeUp .7s .5s ease both; }
+  .cta { animation: fadeUp .7s .45s ease both; }
+
+  .cta-label {
+    text-align: center; margin-bottom: 12px;
+  }
+  .cta-label p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; color: var(--text); margin-bottom: 3px;
+  }
+  .cta-label span { font-size: 12px; color: var(--muted); }
+
   .cta-btn {
     display: flex; align-items: center; justify-content: center; gap: 14px;
-    width: 100%; padding: 15px;
+    width: 100%; padding: 20px;
     background: linear-gradient(135deg, #25D366, #128C7E);
-    border: none; border-radius: 17px; color: white;
-    font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800;
+    border: none; border-radius: 20px; color: white;
+    font-family: 'Nunito', sans-serif; font-size: 17px; font-weight: 800;
     text-decoration: none; cursor: pointer;
-    box-shadow: 0 8px 26px rgba(37,211,102,.4);
-    transition: transform .2s, box-shadow .2s; margin-bottom: 7px;
+    box-shadow: 0 10px 32px rgba(37,211,102,.45);
+    transition: transform .2s, box-shadow .2s; margin-bottom: 8px;
   }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(37,211,102,.55); }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(37,211,102,.6); }
   .cta-btn:active { transform: translateY(0); }
+
   .wa-icon {
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     background: rgba(255,255,255,.2); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px; flex-shrink: 0;
+    font-size: 28px; flex-shrink: 0;
   }
+
+  .cta-text { text-align: left; }
+  .cta-text-kk { font-size: 16px; font-weight: 800; }
+  .cta-text-ru { font-size: 12px; font-weight: 400; opacity: 0.85; }
+
   .cta-note { text-align: center; font-size: 10px; color: var(--muted); }
 
   @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
@@ -150,73 +147,64 @@
   <div class="header">
     <div class="logo-icon">🎵</div>
     <div class="logo-title">Ән Тарту</div>
-    <div class="logo-sub">Жеке ән сыйлаңыз</div>
+    <div class="logo-sub">Жеке ән сыйлаңыз • Персональная песня</div>
   </div>
 
   <div class="hero">
-    <h1>Жақындарыңызға ең ерекше сыйлық —<br>атымен жасалған жеке ән</h1>
-    <p>Жасанды интеллект арқылы тез дайын • 100% жеке, тек сізге арналған</p>
+    <h1>
+      Жақындарыңызға ең ерекше сыйлық —<br>атымен жасалған жеке ән
+      <span>Лучший подарок для близких — персональная песня с именем</span>
+    </h1>
   </div>
 
   <div class="divider"></div>
 
-  <div class="section-title">Кімге арнайсыз?</div>
+  <div class="section-title">Кімге арнайсыз? / Кому посвятить?</div>
   <div class="services">
     <div class="service-card">
       <div class="service-icon">💝</div>
-      <div class="service-name">Жұбайыңызға</div>
-      <div class="service-desc">Сүйіктіңізге</div>
+      <div class="service-kk">Жұбайыңызға</div>
+      <div class="service-ru">Супругу/е</div>
     </div>
     <div class="service-card">
       <div class="service-icon">🌸</div>
-      <div class="service-name">Анаңызға</div>
-      <div class="service-desc">Ең қымбатыңызға</div>
+      <div class="service-kk">Анаңызға</div>
+      <div class="service-ru">Маме</div>
     </div>
     <div class="service-card">
       <div class="service-icon">🎂</div>
-      <div class="service-name">Туған күнге</div>
-      <div class="service-desc">Ұмытылмас</div>
+      <div class="service-kk">Туған күнге</div>
+      <div class="service-ru">На день рождения</div>
     </div>
     <div class="service-card">
       <div class="service-icon">🤝</div>
-      <div class="service-name">Досыңызға</div>
-      <div class="service-desc">Жүректен</div>
+      <div class="service-kk">Досыңызға</div>
+      <div class="service-ru">Другу</div>
     </div>
   </div>
-  <div class="service-more">✨ және басқа да жақындарыңызға — тапсырыс беріңіз!</div>
+  <div class="service-more">✨ және басқа да жақындарыңызға / и другим близким</div>
 
   <div class="divider"></div>
 
-  <div class="section-title">Бағалар</div>
-  <div class="pricing">
-    <div class="price-row">
-      <div class="price-card">
-        <div class="price-emoji">🥉</div>
-        <div class="price-name">Стандарт ән</div>
-        <div class="price-time">⏱ 5–6 сағатта</div>
-        <div class="price-amount">5 000₸</div>
-      </div>
-      <div class="price-card featured">
-        <div class="price-emoji">⚡️</div>
-        <div class="price-name">Жылдам ән</div>
-        <div class="price-time">⏱ 2 сағатта</div>
-        <div class="price-amount">7 000₸</div>
-      </div>
-    </div>
-  </div>
-
   <div class="features">
-    <div class="feature"><div class="feature-dot"></div><span>100% жеке — атымен</span></div>
-    <div class="feature"><div class="feature-dot"></div><span>Ұнамаса — қайта тегін</span></div>
+    <div class="feature"><div class="feature-dot"></div><span>100% жеке / персональная</span></div>
+    <div class="feature"><div class="feature-dot"></div><span>Ұнамаса — тегін қайта / бесплатно переделаем</span></div>
     <div class="feature"><div class="feature-dot"></div><span>Kaspi төлем</span></div>
   </div>
 
   <div class="cta">
-    <a class="cta-btn" href="https://wa.me/87XXXXXXXXX?text=Сәлем!%20Ән%20тапсырыс%20бергім%20келеді%20🎵" target="_blank">
+    <div class="cta-label">
+      <p>Тапсырыс беріңіз!</p>
+      <span>Сделайте заказ прямо сейчас</span>
+    </div>
+    <a class="cta-btn" href="https://wa.me/77474344135" target="_blank">
       <div class="wa-icon">💬</div>
-      WhatsApp-та тапсырыс беру
+      <div class="cta-text">
+        <div class="cta-text-kk">WhatsApp-та жазыңыз</div>
+        <div class="cta-text-ru">Написать в WhatsApp</div>
+      </div>
     </a>
-    <div class="cta-note">Тегін кеңес аласыз • Жауап 5 минутта</div>
+    <div class="cta-note">Тегін кеңес • Бесплатная консультация • Жауап 5 минутта</div>
   </div>
 
 </div>
